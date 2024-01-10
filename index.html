@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>共機擾台時間軸</title>
+  <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+  <div class="app">
+    <div class="card info">
+      <h2>
+        {{ currentDate.date }}
+        共
+        <span>{{ currentDate.totalAircraftCount }}</span>
+        架
+      </h2>
+      <div class="aircraft-list">
+        <div v-for="aircraft in currentDate.aircraft">
+          <span :style="`--bg: ${aircraft.color}`"></span>
+          {{ aircraft.name }} x {{ aircraft.count }}
+        </div>
+      </div>
+
+      <div v-if="!currentDate.aircraft.length">
+        今天沒來呦～
+      </div>
+    </div>
+
+    <div class="card color-def aircraft-list">
+      <h2>時間軸顏色說明</h2>
+      <div>
+        <span style="--bg: #c4aa44"></span> 空飄氣球
+      </div>
+      <div>
+        <span style="--bg: #da8a59"></span> 彩虹4型無人機、攻擊2型無人機、TB-001 無人機、無偵7無人偵察機
+      </div>
+      <div>
+        <span style="--bg: #57aac2"></span> BZK-005、運油-20、直-9 反潛直升機機、運-8 反潛機、運-8 電偵機、運-8 技術偵查機、運-8 遠干機、運-9 通信對抗機、空警-500機
+      </div>
+      <div>
+        <span style="--bg: #6b9ce5"></span> 蘇愷-30機
+      </div>
+      <div>
+        <span style="--bg: #766be5"></span> 轟-6機、轟-6K機
+      </div>
+      <div>
+        <span style="--bg: #a76be5"></span> 殲轟-7機
+      </div>
+      <div>
+        <span style="--bg: #e56b6b"></span> 殲-10機、殲-11機、殲-16機
+      </div>
+    </div>
+
+    <div class="image">
+      <div class="card">
+        <h2>
+          共機擾台示意圖
+          <small v-if="currentDate.aircraft.length">（資料來源國防部）</small>
+        </h2>
+        <img
+          v-if="currentDate.aircraft.length"
+          :src="`/images/${currentDate.date.replace(/-/g, '')}.jpg`"
+          :alt="currentDate.date"
+        >
+        <img
+          v-else
+          src="/images/sleep.jpg"
+          alt="今天沒來呦"
+        >
+      </div>
+    </div>
+
+    <div class="scroller-pin"></div>
+
+    <div class="scroller">
+      <div class="timeline">
+        <div
+          v-for="(date, idx) in dateData"
+          class="date"
+          :class="{ active: currentDateIdx === idx }"
+          :style="`--percent: ${(date.totalAircraftCount / maxCountADay)}`"
+        >
+          <div class="aircrafts">
+            <div
+              v-for="aircraft in date.aircraft"
+              class="aircraft"
+              :style="`--color: ${aircraft.color}; --percent: ${(aircraft.count / date.totalAircraftCount * 100)}%`"
+              :title="aircraft.name"
+            ></div>
+          </div>
+          <div
+            v-if="idx === 0 || (idx > 0 && date.date.split('-')[1] !== dateData[idx - 1].date.split('-')[1])"
+            class="date-label"
+          >
+            {{ date.date }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/common.js" type="module"></script>
+</body>
+</html>
