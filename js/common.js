@@ -51,6 +51,34 @@ createApp({
           }
         }
       })
+
+      // scroll by drag
+      let mouseDown = false
+      let startX, scrollLeft
+
+      const startDragging = (e) => {
+        mouseDown = true
+        startX = e.pageX - scroller.offsetLeft
+        scrollLeft = scroller.scrollLeft
+      }
+
+      const stopDragging = (e) => {
+        mouseDown = false
+      }
+
+      const move = (e) => {
+        e.preventDefault()
+        if(!mouseDown) { return }
+        const x = e.pageX - scroller.offsetLeft
+        const scroll = x - startX
+        scroller.scrollLeft = scrollLeft - scroll
+      }
+
+      // Add the event listeners
+      scroller.addEventListener('mousemove', move, false)
+      scroller.addEventListener('mousedown', startDragging, false)
+      scroller.addEventListener('mouseup', stopDragging, false)
+      scroller.addEventListener('mouseleave', stopDragging, false)
     })
 
     const currentDate = computed(() => {
