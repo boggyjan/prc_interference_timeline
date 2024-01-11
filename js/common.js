@@ -37,6 +37,7 @@ createApp({
     onMounted(() => {
       const scroller = document.querySelector('.scroller')
       scroller.addEventListener('scroll', (event) => {
+        console.log(scroller.scrollLeft)
         const half = scroller.clientWidth / 2
         const allDate = document.querySelectorAll('.date')
         let current = 0
@@ -79,6 +80,9 @@ createApp({
       scroller.addEventListener('mousedown', startDragging, false)
       scroller.addEventListener('mouseup', stopDragging, false)
       scroller.addEventListener('mouseleave', stopDragging, false)
+
+      // slide to right at start
+      scroller.scrollLeft = scroller.scrollWidth - scroller.clientWidth - 10
     })
 
     const currentDate = computed(() => {

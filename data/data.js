@@ -1,5 +1,22 @@
 export default [
   {
+    date: '2024-01-11',
+    aircraft: [
+      {
+        type: 'Balloon',
+        count: 3
+      },
+      {
+        type: 'Y-8 ASW',
+        count: 1
+      },
+      {
+        type: 'Y-9CC',
+        count: 1
+      }
+    ]
+  },
+  {
     date: '2024-01-10',
     aircraft: [
       {
