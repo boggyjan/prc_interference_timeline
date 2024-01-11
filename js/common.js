@@ -37,7 +37,6 @@ createApp({
     onMounted(() => {
       const scroller = document.querySelector('.scroller')
       scroller.addEventListener('scroll', (event) => {
-        console.log(scroller.scrollLeft)
         const half = scroller.clientWidth / 2
         const allDate = document.querySelectorAll('.date')
         let current = 0
