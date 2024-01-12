@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>共機擾台時間軸</title>
-  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
   <div class="app">
@@ -60,12 +60,12 @@
         </h2>
         <img
           v-if="currentDate.aircraft.length"
-          :src="`/images/${currentDate.date.replace(/-/g, '')}.jpg`"
+          :src="`images/${currentDate.date.replace(/-/g, '')}.jpg`"
           :alt="currentDate.date"
         >
         <img
           v-else
-          src="/images/sleep.jpg"
+          src="images/sleep.jpg"
           alt="今天沒來呦"
         >
       </div>
