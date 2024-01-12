@@ -1,5 +1,5 @@
 :root {
-  --timeline-h: 20vh;
+  --timeline-h: 10vh;
   --bar-w: 10px;
   --bar-m: 5px;
   --bar-h-base: 2px;
@@ -99,7 +99,7 @@ hr {
   left: 50%;
   bottom: 5px;
   width: 1px;
-  height: calc(var(--timeline-h) + 20px + 3rem - 10px);
+  height: calc(var(--timeline-h) + 1rem + 2.4rem - 10px);
   background: #f66;
   z-index: 1000;
 }
@@ -109,7 +109,7 @@ hr {
   bottom: 0;
   left:0;
   right: 0;
-  padding: 20px 0 3rem 0;
+  padding: 1rem 0 2.4rem 0;
   overflow-x: auto;
   webkit-overflow-scrolling: touch;
   border-top: 1px solid #ddd;
