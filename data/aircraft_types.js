@@ -36,7 +36,7 @@ export default [
   },
   {
     type: 'Z-9 ASW',
-    name: '直-9 反潛直升機機',
+    name: '直-9 反潛直升機',
     color: '#57aac2'
   },
   {
