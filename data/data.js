@@ -1,5 +1,27 @@
 export default [
   {
+    date: '2024-01-15',
+    aircraft: [
+      {
+        type: 'Balloon',
+        count: 1
+      },
+      {
+        type: 'BZK-005 UAV RECCE',
+        count: 1
+      }
+    ]
+  },
+  {
+    date: '2024-01-14',
+    aircraft: [
+      {
+        type: 'Balloon',
+        count: 1
+      }
+    ]
+  },
+  {
     date: '2024-01-13',
     aircraft: [
       {
